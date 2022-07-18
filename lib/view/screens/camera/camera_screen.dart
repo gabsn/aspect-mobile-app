@@ -108,7 +108,7 @@ class _CameraScreenState extends State<CameraScreen> {
                       const SizedBox(height: 20.0),
                       MaterialSolidButton(
                           backgroundColor: kStyleGuideColorDarkGrey,
-                          buttonText: 'Take Picture',
+                          buttonText: 'Take Picture & Mint NFT',
                           buttonTextStyle: kLoginButtonTextStyle.copyWith(
                               color: kStyleGuideColorGreen),
                           onPressed: () async {
