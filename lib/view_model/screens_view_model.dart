@@ -7,7 +7,6 @@
 /// Imports ------------------------------------------
 ///
 /// External
-import 'dart:async';
 import 'package:flutter/material.dart';
 
 /// Model
@@ -21,7 +20,7 @@ import 'package:aspect_mobile_app/view/screens/nft/nft_collection_screen.dart';
 class ScreensChangeNotifier extends ChangeNotifier {
   late int _index = 0;
 
-  final _pages = <Widget>[HomeScreen(), NFTCollectionScreen()];
+  final _pages = <Widget>[const HomeScreen(), const NFTCollectionScreen()];
 
   int get pageIndex {
     return _index;

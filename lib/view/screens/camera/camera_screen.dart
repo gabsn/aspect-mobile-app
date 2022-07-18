@@ -13,8 +13,6 @@ import 'package:provider/provider.dart';
 import 'package:aspect_mobile_app/view_model/screens_view_model.dart';
 
 /// View
-import 'package:aspect_mobile_app/view/screens/home/home_screen.dart';
-import 'package:aspect_mobile_app/view/widgets/appbar_widget.dart';
 
 ///Model
 import 'package:aspect_mobile_app/model/constants/constants.dart';

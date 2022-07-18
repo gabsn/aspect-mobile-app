@@ -9,10 +9,8 @@
 import 'package:flutter/material.dart';
 
 /// Model
-import 'package:aspect_mobile_app/model/constants/constants.dart';
 
 /// View
-import 'package:provider/provider.dart';
 
 /// Imports ------------------------------------------
 ///
