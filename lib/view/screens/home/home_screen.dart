@@ -46,21 +46,15 @@ class _HomeScreenState extends State<HomeScreen> {
         onWillPop: () async => false,
         child: Consumer<ScreensChangeNotifier>(
           builder: (context, gameDataManager, _) {
-            return Scaffold(
-              appBar: const AppBarWidget(
-                title: 'Home',
+            return const Scaffold(
+              appBar: AppBarWidget(
+                title: 'Latest Aspect NFT\'s',
               ),
               body: SafeArea(
-                  child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Text('Hello'),
-                  Text('World'),
-                ],
-              )
-                  //LoadDataStatisticsScreenWidget(),
-                  ),
+                child: Center(
+                  child: Text('Hello World'),
+                ),
+              ),
             );
           },
         ),

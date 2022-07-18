@@ -14,12 +14,10 @@ import 'package:aspect_mobile_app/view_model/screens_view_model.dart';
 
 /// View
 import 'package:aspect_mobile_app/view/screens/home/home_screen.dart';
-
 import 'package:aspect_mobile_app/view/widgets/appbar_widget.dart';
 
-import '../../../model/constants/constants.dart';
-
 ///Model
+import 'package:aspect_mobile_app/model/constants/constants.dart';
 
 /// Imports ------------------------------------------
 
@@ -47,29 +45,15 @@ class _CameraScreenState extends State<CameraScreen> {
         onWillPop: () async => false,
         child: Consumer<ScreensChangeNotifier>(
           builder: (context, screenChangeNotifier, _) {
-            return SafeArea(
-              child: Scaffold(
-                body: Stack(
-                  children: <Widget>[
-                    const SizedBox(height: 10.0),
-                    Container(
-                      color: Colors.black87,
-                      child: Container(
-                        decoration: kAddGameModalBoxDecoration.copyWith(
-                            color: Colors.green), //kStyleGuideColorDarkGrey),
-                        padding: EdgeInsets.only(
-                            top: 30.0, left: 100.0, right: 30.0, bottom: 30.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
-                            Text('Hello'),
-                            Text('World'),
-                          ],
-                        ),
-                      ),
-                    )
-                  ],
+            return Container(
+              color: Colors.black87,
+              child: Container(
+                decoration: kAddGameModalBoxDecoration.copyWith(
+                    color: kStyleGuideColorGreen),
+                padding: const EdgeInsets.only(
+                    top: 30.0, left: 30.0, right: 30.0, bottom: 30.0),
+                child: const Center(
+                  child: Text('Hello World'),
                 ),
               ),
             );

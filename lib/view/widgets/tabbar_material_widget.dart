@@ -45,18 +45,8 @@ class TabBarMaterialWidget extends StatelessWidget {
             placeholder,
             buildTabItem(
               index: 1,
-              icon: kNavigationIconStatistics,
-            )
-
-            /*       buildTabItem(
-              index: 2,
-              icon: kNavigationIconGames,
+              icon: kNavigationIconNFTCollection,
             ),
-            buildTabItem(
-              index: 3,
-              icon: kNavigationIconProfile,
-            )*/
-            ,
           ],
         ),
       );

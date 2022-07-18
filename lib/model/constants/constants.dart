@@ -26,8 +26,15 @@ const kStyleGuideColorWhite = Color.fromRGBO(248, 245, 255, 1.0);
 //Bottom Navigation Styling -------------------------------------
 const kNavigationButtonColorSelected = Colors.pinkAccent;
 const kNavigationButtonColor = Colors.white;
-const kNavigationIconHome = Icon(Icons.dashboard);
+const kNavigationIconHome = Icon(
+  Icons.dashboard,
+  size: 30,
+);
 const kNavigationIconStatistics = Icon(Icons.insights);
+const kNavigationIconNFTCollection = Icon(
+  Icons.rocket_launch,
+  size: 30,
+);
 const kNavigationIconGames = Icon(Icons.sports_esports);
 const kNavigationIconProfile = Icon(Icons.account_circle);
 //Bottom Navigation Styling -------------------------------------

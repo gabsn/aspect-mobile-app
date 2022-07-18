@@ -46,7 +46,6 @@ class MainScreen extends StatelessWidget {
               key: UniqueKey(), //onChangedTabLocal,
             ),
             floatingActionButton: FloatingActionButton(
-              child: const Icon(Icons.camera),
               backgroundColor: kStyleGuideColorGreen,
               disabledElevation: 10.0,
               onPressed: () async {
@@ -61,6 +60,10 @@ class MainScreen extends StatelessWidget {
                   //Do something
                 }
               },
+              child: const Icon(
+                Icons.camera,
+                size: 50,
+              ),
             ),
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.centerDocked,

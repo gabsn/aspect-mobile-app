@@ -35,14 +35,14 @@ class AppBarWidget extends StatelessWidget with PreferredSizeWidget {
             style: const TextStyle(fontSize: 16),
           ),
           automaticallyImplyLeading: false,
-          actions: [
+/*          actions: [
             IconButton(
               onPressed: () {},
               icon: const Icon(Icons.sailing),
               color: kStyleGuideColorWhite,
               iconSize: 20,
             )
-          ],
+          ],*/
         ),
       );
     } catch (e) {
