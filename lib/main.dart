@@ -5,20 +5,31 @@
 ///
 /// Imports ------------------------------------------
 ///External
-
-import 'package:aspect_mobile_app/view/screens/main/main_screen.dart';
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 /// View
 import 'package:aspect_mobile_app/view_model/screens_view_model.dart';
+import 'package:aspect_mobile_app/view/screens/main/main_screen.dart';
 
 /// Model
 import 'package:aspect_mobile_app/model/constants/constants.dart';
 
+import 'model/services/camera_service/camera_service.dart';
+import 'model/services/service_locator.dart';
+
 /// Imports ------------------------------------------
 
-void main() {
+Future<void> main() async {
+  //Initialize getIt
+  WidgetsFlutterBinding.ensureInitialized();
+  setupGetIt();
+
+  //Initialize the camera
+  await getIt<CameraService>().initializeCamera();
+
+  //Run the app
   runApp(const AspectMobileApp());
 }
 

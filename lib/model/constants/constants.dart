@@ -48,3 +48,9 @@ const kAddGameModalBoxDecoration = BoxDecoration(
     topRight: Radius.circular(20.0),
   ),
 );
+
+const kLoginButtonTextStyle = TextStyle(
+  fontSize: 14.0,
+  fontWeight: FontWeight.w600,
+  color: kStyleGuideColorWhite,
+);
