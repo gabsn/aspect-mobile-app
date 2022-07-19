@@ -1,5 +1,7 @@
 # Aspect mobile app written in Flutter
 
+Checkout the [demo video](https://youtu.be/pB1SL2qRV-Q)!
+
 ## Team
 - [chriz](https://github.com/chrizmichels)
 - [gabsn](https://github.com/gabsn)
