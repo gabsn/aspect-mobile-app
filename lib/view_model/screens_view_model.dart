@@ -19,11 +19,21 @@ import 'package:aspect_mobile_app/view/screens/nft/nft_collection_screen.dart';
 
 class ScreensChangeNotifier extends ChangeNotifier {
   late int _index = 0;
+  late List<Widget> _nftAssetList = [];
+  late List<Widget> _nftMyAssetList = [];
 
   final _pages = <Widget>[const HomeScreen(), const NFTCollectionScreen()];
 
   int get pageIndex {
     return _index;
+  }
+
+  List<Widget> get nftAssetList {
+    return _nftAssetList;
+  }
+
+  List<Widget> get nftMyAssetList {
+    return _nftMyAssetList;
   }
 
   Widget activePage(int index) {
@@ -37,6 +47,24 @@ class ScreensChangeNotifier extends ChangeNotifier {
   void setIndex({required int index}) {
     try {
       _index = index;
+      notifyListeners();
+    } catch (e) {
+      throw Exception(e.toString());
+    }
+  }
+
+  void setNftAssetList({required List<Widget> nftAssetList}) {
+    try {
+      _nftAssetList = nftAssetList;
+      notifyListeners();
+    } catch (e) {
+      throw Exception(e.toString());
+    }
+  }
+
+  void setNftMyAssetList({required List<Widget> nftAssetList}) {
+    try {
+      _nftMyAssetList = nftAssetList;
       notifyListeners();
     } catch (e) {
       throw Exception(e.toString());
