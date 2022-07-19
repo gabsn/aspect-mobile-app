@@ -7,6 +7,7 @@
 ///
 /// Imports ------------------------------------------
 /// External
+import 'package:aspect_mobile_app/view/screens/nft/nft_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -45,7 +46,7 @@ class _NFTCollectionScreenState extends State<NFTCollectionScreen> {
         child: Consumer<ScreensChangeNotifier>(
           builder: (context, gameDataManager, _) {
             return Scaffold(
-              appBar: AppBarWidget(
+              appBar: const AppBarWidget(
                 title: 'Minted by Me',
               ),
               body: SafeArea(
@@ -54,17 +55,33 @@ class _NFTCollectionScreenState extends State<NFTCollectionScreen> {
                     primary: false,
                     slivers: <Widget>[
                       SliverPadding(
-                        padding: EdgeInsets.all(20),
+                        padding: const EdgeInsets.all(20),
                         sliver: SliverGrid.count(
                           crossAxisSpacing: 10,
                           mainAxisSpacing: 10,
                           crossAxisCount: 2,
                           children: <Widget>[
-                            Container(
-                              padding: const EdgeInsets.all(8),
-                              color: Colors.green[100],
-                              child: const Text(
-                                  "He'd have you all unravel at the"),
+                            InkWell(
+                              child: Container(
+                                padding: const EdgeInsets.all(8),
+                                color: Colors.green[100],
+                                child: const Text(
+                                    "He'd have you all unravel at the"),
+                              ),
+                              onTap: () async {
+                                try {
+                                  // If the picture was taken, display it on a new screen.
+                                  await Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          const DisplayNFTDetailsScreen(),
+                                    ),
+                                  );
+                                } catch (e) {
+                                  // If an error occurs, log the error to the console.
+                                  print(e);
+                                }
+                              },
                             ),
                             Container(
                               padding: const EdgeInsets.all(8),

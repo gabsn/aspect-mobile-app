@@ -28,19 +28,21 @@ class AppBarWidget extends StatelessWidget with PreferredSizeWidget {
       return PreferredSize(
         preferredSize: const Size.fromHeight(50.0),
         child: AppBar(
-          title: Text(
-            title,
-            style: const TextStyle(fontSize: 16),
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                title,
+                style: const TextStyle(fontSize: 16),
+              ),
+              const Image(
+                image: AssetImage('images/starknet_logo_small.png'),
+                width: 40,
+                height: 40,
+              ),
+            ],
           ),
           automaticallyImplyLeading: false,
-/*          actions: [
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.sailing),
-              color: kStyleGuideColorWhite,
-              iconSize: 20,
-            )
-          ],*/
         ),
       );
     } catch (e) {

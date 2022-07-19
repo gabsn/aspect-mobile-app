@@ -7,6 +7,7 @@
 ///
 /// Imports ------------------------------------------
 /// External
+import 'package:aspect_mobile_app/model/services/aspect_api_services/aspect_api_services.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -15,6 +16,9 @@ import 'package:aspect_mobile_app/view_model/screens_view_model.dart';
 
 /// View
 import 'package:aspect_mobile_app/view/widgets/appbar_widget.dart';
+
+///Model
+import 'package:aspect_mobile_app/model/services/service_locator.dart';
 
 ///Model
 
@@ -43,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
       return WillPopScope(
         onWillPop: () async => false,
         child: Consumer<ScreensChangeNotifier>(
-          builder: (context, gameDataManager, _) {
+          builder: (context, screenChangeNotifier, _) {
             return Scaffold(
               appBar: const AppBarWidget(
                 title: 'Latest Aspect NFT\'s',
@@ -60,11 +64,26 @@ class _HomeScreenState extends State<HomeScreen> {
                           mainAxisSpacing: 10,
                           crossAxisCount: 2,
                           children: <Widget>[
-                            Container(
-                              padding: const EdgeInsets.all(8),
-                              color: Colors.green[100],
-                              child: const Text(
-                                  "He'd have you all unravel at the"),
+                            InkWell(
+                              child: Container(
+                                padding: const EdgeInsets.all(8),
+                                color: Colors.green[100],
+                                child: const Text(
+                                    "He'd have you all unravel at the"),
+                              ),
+                              onTap: () async {
+                                try {
+                                  //call Aspect Service to get NFT's
+                                  final NFTAssets =
+                                      await getIt<AspectAPIService>()
+                                          .getAspectAssets(limit: 10);
+
+                                  print(NFTAssets.toString());
+                                } catch (e) {
+                                  // If an error occurs, log the error to the console.
+                                  print(e);
+                                }
+                              },
                             ),
                             Container(
                               padding: const EdgeInsets.all(8),
@@ -117,3 +136,7 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 }
+
+/*
+
+ */
