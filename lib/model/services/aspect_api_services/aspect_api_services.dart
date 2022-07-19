@@ -30,4 +30,25 @@ class AspectAPIService {
       throw Exception(e.toString());
     }
   }
+
+  Future<List> getAspectAssetsByWalletAddress(
+      {required int limit, required String walletAddress}) async {
+    List retList = [];
+
+    try {
+      var response = await http.get(
+        Uri.parse(
+            'https://api-testnet.aspect.co/api/v0/assets?owner_address=0x078C10DF71F013F5f2028bc3bFe7013fe5D79F438d603565323bD1914887F746&sort_by=minted_at&order_by=desc&limit=10'),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+      );
+
+      retList = json.decode("[${response.body}]");
+
+      return retList;
+    } catch (e) {
+      throw Exception(e.toString());
+    }
+  }
 }

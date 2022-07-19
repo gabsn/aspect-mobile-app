@@ -24,20 +24,18 @@ Future<List> loadNFTAssetsFromAspect({int limit = 10}) async {
     final List nftAssets = response[0]['assets'];
 
     //Convert Assets to Data Objects
-    nftAssets.forEach(
-      (element) {
-        dataAssets.add(
-          NFTMetadata(
-            nftName: element['name'].toString(),
-            nftCollectionName: '',
-            nftOwnerAccountAddress:
-                element['owner']['account_address'].toString(),
-            nftDescription: element['description'].toString(),
-            nftImageURL: element['image_url_copy'].toString(),
-          ),
-        );
-      },
-    );
+    for (var element in nftAssets) {
+      dataAssets.add(
+        NFTMetadata(
+          nftName: element['name'].toString(),
+          nftCollectionName: '',
+          nftOwnerAccountAddress:
+              element['owner']['account_address'].toString(),
+          nftDescription: element['description'].toString(),
+          nftImageURL: element['image_url_copy'].toString(),
+        ),
+      );
+    }
 
     return dataAssets;
   } catch (e) {
@@ -61,8 +59,8 @@ List<Widget> createWidgetListFromAssets(List dataAssets) {
                 element.nftImageURL.toString() == 'null'
                     ? const Image(
                         image: AssetImage('images/starknet_logo_small.png'),
-                        width: 40,
-                        height: 40,
+                        width: 100,
+                        height: 100,
                       )
                     : Image.network(
                         element.nftImageURL.toString(),

@@ -54,14 +54,14 @@ class _HomeScreenState extends State<HomeScreen> {
           },
         );
 
-        print(_nftAssets.length.toString());
+        print('NFT Asset Count Home Screen -> ${_nftAssets.length.toString()}');
 
-        _nftAssets.forEach((element) {
+        for (var element in _nftAssets) {
           print('------');
           print(element.nftOwnerAccountAddress.toString());
 
           print('------');
-        });
+        }
       });
 
       super.initState();
