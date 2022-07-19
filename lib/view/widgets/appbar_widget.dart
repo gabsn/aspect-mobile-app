@@ -8,10 +8,6 @@
 /// External
 import 'package:flutter/material.dart';
 
-/// Model
-
-/// View
-
 /// Imports ------------------------------------------
 ///
 class AppBarWidget extends StatelessWidget with PreferredSizeWidget {

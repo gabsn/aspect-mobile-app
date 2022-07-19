@@ -11,17 +11,21 @@ import 'package:http/http.dart' as http;
 /// Imports ------------------------------------------
 
 class AspectAPIService {
-  Future<String> getAspectAssets({required int limit}) async {
+  Future<List> getAspectAssets({required int limit}) async {
+    List retList = [];
+
     try {
       var response = await http.get(
         Uri.parse(
-            'https://api-testnet.aspect.co/api/v0/assets?sort_by=minted_at&order_by=desc&limit=3'),
+            'https://api-testnet.aspect.co/api/v0/assets?sort_by=minted_at&order_by=desc&limit=$limit'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
       );
 
-      return response.body;
+      retList = json.decode("[${response.body}]");
+
+      return retList;
     } catch (e) {
       throw Exception(e.toString());
     }
