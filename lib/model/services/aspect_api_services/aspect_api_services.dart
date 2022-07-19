@@ -38,7 +38,7 @@ class AspectAPIService {
     try {
       var response = await http.get(
         Uri.parse(
-            'https://api-testnet.aspect.co/api/v0/assets?owner_address=0x078C10DF71F013F5f2028bc3bFe7013fe5D79F438d603565323bD1914887F746&sort_by=minted_at&order_by=desc&limit=10'),
+            'https://api-testnet.aspect.co/api/v0/assets?owner_address=$walletAddress&sort_by=minted_at&order_by=desc&limit=$limit'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },

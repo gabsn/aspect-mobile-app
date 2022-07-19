@@ -26,20 +26,18 @@ Future<List> loadNFTAssetsFromAspectWithWalletAddress(
     final List nftAssets = response[0]['assets'];
 
     //Convert Assets to Data Objects
-    nftAssets.forEach(
-      (element) {
-        dataAssets.add(
-          NFTMetadata(
-            nftName: element['name'].toString(),
-            nftCollectionName: '',
-            nftOwnerAccountAddress:
-                element['owner']['account_address'].toString(),
-            nftDescription: element['description'].toString(),
-            nftImageURL: element['image_url_copy'].toString(),
-          ),
-        );
-      },
-    );
+    for (var element in nftAssets) {
+      dataAssets.add(
+        NFTMetadata(
+          nftName: element['name'].toString(),
+          nftCollectionName: '',
+          nftOwnerAccountAddress:
+              element['owner']['account_address'].toString(),
+          nftDescription: element['description'].toString(),
+          nftImageURL: element['image_url_copy'].toString(),
+        ),
+      );
+    }
 
     return dataAssets;
   } catch (e) {
