@@ -1,4 +1,4 @@
-# aspect-mobile-app
+# Aspect mobile app written in Flutter
 
 ## Team
 - [chriz](https://github.com/chrizmichels)
