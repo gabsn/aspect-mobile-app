@@ -36,33 +36,26 @@ class _NFTCollectionScreenState extends State<NFTCollectionScreen> {
   void initState() {
     try {
       try {
-        Future.delayed(Duration.zero, () async {
-          //Load NFT Assets from Aspect
-          WidgetsBinding.instance.addPostFrameCallback(
-            (timeStamp) async {
-              final screenChangeManagerLocal =
-                  Provider.of<ScreensChangeNotifier>(context, listen: false);
+        Future.delayed(
+          Duration.zero,
+          () async {
+            //Load NFT Assets from Aspect
+            WidgetsBinding.instance.addPostFrameCallback(
+              (timeStamp) async {
+                final screenChangeManagerLocal =
+                    Provider.of<ScreensChangeNotifier>(context, listen: false);
 
-              //Load Games List
-              _nftAssets = await loadNFTAssetsFromAspectWithWalletAddress(
-                  walletAddress:
-                      '0x078C10DF71F013F5f2028bc3bFe7013fe5D79F438d603565323bD1914887F746');
+                //Load Games List
+                _nftAssets = await loadNFTAssetsFromAspectWithWalletAddress(
+                    walletAddress:
+                        '0x078C10DF71F013F5f2028bc3bFe7013fe5D79F438d603565323bD1914887F746');
 
-              screenChangeManagerLocal.setNftMyAssetList(
-                  nftAssetList: createWidgetListFromAssets(_nftAssets));
-            },
-          );
-
-          print(
-              'NFT Asset Count MYNFTs Screen -> ${_nftAssets.length.toString()}');
-
-          for (var element in _nftAssets) {
-            print('------');
-            print(element.nftOwnerAccountAddress.toString());
-
-            print('------');
-          }
-        });
+                screenChangeManagerLocal.setNftMyAssetList(
+                    nftAssetList: createWidgetListFromAssets(_nftAssets));
+              },
+            );
+          },
+        );
 
         super.initState();
       } catch (e) {
@@ -112,40 +105,3 @@ class _NFTCollectionScreenState extends State<NFTCollectionScreen> {
     }
   }
 }
-
-/*
-<Widget>[
-                            InkWell(
-                              child: Container(
-                                padding: const EdgeInsets.all(8),
-                                color: Colors.green[100],
-                                child: const Text(
-                                    "He'd have you all unravel at the"),
-                              ),
-                              onTap: () async {
-                                try {
-                                  // If the picture was taken, display it on a new screen.
-                                  await Navigator.of(context).push(
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          const DisplayNFTDetailsScreen(),
-                                    ),
-                                  );
-                                } catch (e) {
-                                  // If an error occurs, log the error to the console.
-                                  print(e);
-                                }
-                              },
-                            ),
-                            Container(
-                              padding: const EdgeInsets.all(8),
-                              color: Colors.green[200],
-                              child: const Text('Heed not the rabble'),
-                            ),
-                            Container(
-                              padding: const EdgeInsets.all(8),
-                              color: Colors.green[300],
-                              child: const Text('Sound of screams but the'),
-                            ),
-                          ],
- */

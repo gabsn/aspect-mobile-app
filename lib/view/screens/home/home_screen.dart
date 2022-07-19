@@ -39,30 +39,24 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     try {
-      Future.delayed(Duration.zero, () async {
-        //Load NFT Assets from Aspect
-        WidgetsBinding.instance.addPostFrameCallback(
-          (timeStamp) async {
-            final screenChangeManagerLocal =
-                Provider.of<ScreensChangeNotifier>(context, listen: false);
+      Future.delayed(
+        Duration.zero,
+        () async {
+          //Load NFT Assets from Aspect
+          WidgetsBinding.instance.addPostFrameCallback(
+            (timeStamp) async {
+              final screenChangeManagerLocal =
+                  Provider.of<ScreensChangeNotifier>(context, listen: false);
 
-            //Load Games List
-            _nftAssets = await loadNFTAssetsFromAspect();
+              //Load Games List
+              _nftAssets = await loadNFTAssetsFromAspect();
 
-            screenChangeManagerLocal.setNftAssetList(
-                nftAssetList: createWidgetListFromAssets(_nftAssets));
-          },
-        );
-
-        print('NFT Asset Count Home Screen -> ${_nftAssets.length.toString()}');
-
-        for (var element in _nftAssets) {
-          print('------');
-          print(element.nftOwnerAccountAddress.toString());
-
-          print('------');
-        }
-      });
+              screenChangeManagerLocal.setNftAssetList(
+                  nftAssetList: createWidgetListFromAssets(_nftAssets));
+            },
+          );
+        },
+      );
 
       super.initState();
     } catch (e) {
