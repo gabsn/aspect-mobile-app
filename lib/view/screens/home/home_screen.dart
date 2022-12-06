@@ -52,7 +52,8 @@ class _HomeScreenState extends State<HomeScreen> {
               _nftAssets = await loadNFTAssetsFromAspect();
 
               screenChangeManagerLocal.setNftAssetList(
-                  nftAssetList: createWidgetListFromAssets(_nftAssets));
+                  nftAssetList:
+                      createWidgetListFromAssets(_nftAssets, context));
             },
           );
         },
@@ -71,6 +72,11 @@ class _HomeScreenState extends State<HomeScreen> {
         onWillPop: () async => false,
         child: Consumer<ScreensChangeNotifier>(
           builder: (context, screenChangeNotifier, _) {
+            if (screenChangeNotifier.nftAssetList.isEmpty) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
             return Scaffold(
               appBar: const AppBarWidget(
                 title: 'Latest 10 Aspect NFT\'s',
@@ -98,7 +104,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       );
     } catch (e) {
-      throw Exception(e.toString());
+      throw Exception('HELLO ${e.toString()}');
     }
   }
 }

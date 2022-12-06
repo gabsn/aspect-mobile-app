@@ -23,6 +23,10 @@ class AspectAPIService {
         },
       );
 
+      //https://api-testnet.aspect.co/api/v0/assets?contract_address=0x07b6d00f28db723199bb54ca74a879a5102c44141f0e93674b2cb25f8f253c62%27&order_by=desc&limit=10
+      //https://api-testnet.aspect.co/api/v0/assets?contract_address=0x07b6d00f28db723199bb54ca74a879a5102c44141f0e93674b2cb25f8f253c62%27&order_by=asc&sort_by=minted_at&limit=10
+      //'https://api-testnet.aspect.co/api/v0/assets?sort_by=minted_at&order_by=desc&limit=$limit'
+
       retList = json.decode("[${response.body}]");
 
       return retList;

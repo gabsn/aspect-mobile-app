@@ -11,10 +11,13 @@ import 'package:aspect_mobile_app/model/services/aspect_api_services/aspect_api_
 import 'package:aspect_mobile_app/model/services/service_locator.dart';
 import 'package:aspect_mobile_app/model/data/nft_metadata.dart';
 import 'package:flutter/material.dart';
+import 'package:path/path.dart';
+
+import '../nft/nft_details_screen.dart';
 
 /// Imports ------------------------------------------
 
-Future<List> loadNFTAssetsFromAspect({int limit = 10}) async {
+Future<List> loadNFTAssetsFromAspect({int limit = 20}) async {
   try {
     final dataAssets = [];
 
@@ -25,6 +28,8 @@ Future<List> loadNFTAssetsFromAspect({int limit = 10}) async {
 
     //Convert Assets to Data Objects
     for (var element in nftAssets) {
+      print(element['name'].toString());
+      print(element['image_small_url_copy'].toString());
       dataAssets.add(
         NFTMetadata(
           nftName: element['name'].toString(),
@@ -32,7 +37,7 @@ Future<List> loadNFTAssetsFromAspect({int limit = 10}) async {
           nftOwnerAccountAddress:
               element['owner']['account_address'].toString(),
           nftDescription: element['description'].toString(),
-          nftImageURL: element['image_url_copy'].toString(),
+          nftImageURL: element['image_small_url_copy'].toString(),
         ),
       );
     }
@@ -43,7 +48,7 @@ Future<List> loadNFTAssetsFromAspect({int limit = 10}) async {
   }
 }
 
-List<Widget> createWidgetListFromAssets(List dataAssets) {
+List<Widget> createWidgetListFromAssets(List dataAssets, BuildContext context) {
   List<Widget> widgetList = [];
 
   dataAssets.forEach(
@@ -56,18 +61,22 @@ List<Widget> createWidgetListFromAssets(List dataAssets) {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                element.nftImageURL.toString() == 'null'
-                    ? const Image(
-                        image: AssetImage('images/starknet_logo_small.png'),
-                        width: 100,
-                        height: 100,
-                      )
-                    : Image.network(
-                        element.nftImageURL.toString(),
-                        height: 100,
+                Image.network(
+                  element.nftImageURL.toString(),
+                  height: 100,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Container(
+                      color: Colors.amber,
+                      alignment: Alignment.center,
+                      child: const Text(
+                        'Whoops!',
+                        style: TextStyle(fontSize: 30),
                       ),
+                    );
+                  },
+                ),
                 Text(
-                  element.nftOwnerAccountAddress.toString(),
+                  element.nftName.toString(),
                   style: const TextStyle(fontSize: 10),
                 )
               ],
@@ -76,7 +85,18 @@ List<Widget> createWidgetListFromAssets(List dataAssets) {
           onTap: () async {
             try {
               //call Aspect Service to get NFT's
+              print('TAB TAB');
+              print(element.nftName.toString());
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => DisplayNFTDetailsScreen(
+                    imageUrl: element.nftImageURL.toString(),
+                    nftName: element.nftName.toString(),
+                  ),
+                ),
+              );
 
+              //Navigator.push(context, route)
             } catch (e) {
               // If an error occurs, log the error to the console.
               print(e);

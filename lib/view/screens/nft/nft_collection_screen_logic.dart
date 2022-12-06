@@ -77,7 +77,7 @@ List<Widget> createWidgetListFromAssets(List dataAssets) {
         onTap: () async {
           try {
             //call Aspect Service to get NFT's
-
+            print('hello');
           } catch (e) {
             // If an error occurs, log the error to the console.
             print(e);
