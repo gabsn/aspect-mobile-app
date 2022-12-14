@@ -53,7 +53,7 @@ void main() {
       //Convert Assets to Data Objects
       for (var element in nftAssets) {
         print(element['owner']['account_address'].toString());
-        //Check only thone values which are not null
+        //Check only those values which are not null
         if (element['owner']['account_address'] != null) {
           expect(element['owner']['account_address'], isA<String>());
         }
